@@ -55,10 +55,8 @@ onMounted(() => {
   fetchVehicleTypes();
 });
 </script>
-
-
 <template>
-  <div class="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-[#090c10]">
+  <div class="flex  flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-[#090c10]">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
         Vehicle Price Calculator
@@ -79,6 +77,7 @@ onMounted(() => {
                 name="basePrice"
                 type="number"
                 placeholder="Enter vehicle price"
+                step="0.01"
                 required
                 class="block w-full rounded-md border-0 py-1.5 bg-[#2f3a51] text-white shadow-sm ring-1 ring-inset ring-[#415071] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
@@ -116,8 +115,6 @@ onMounted(() => {
           </button>
         </div>
       </form>
-
-      <!-- Display the result if calculation is completed -->
       <div v-if="calculationResult" class="mt-10 space-y-2 text-white">
         <div class="text-lg font-bold">Calculation Result:</div>
         <table class="w-full text-sm text-left rounded-md shadow-lg overflow-hidden mb-6 table-auto bg-white text-gray-900">
