@@ -113,35 +113,27 @@ const newVehicleType = ref({
   special_fee_rate: ''
 });
 
-// Fetch vehicle types on component mount
 onMounted(async () => {
   await vehicleTypeStore.fetchVehicleTypes();
 });
 
-// Submit new vehicle type
 const submitNewVehicleType = async () => {
-  // Ensure proper conversion from percentage to decimal before sending to backend
   const adjustedVehicleType = {
     ...newVehicleType.value,
     basic_fee_rate: newVehicleType.value.basic_fee_rate / 100,
     special_fee_rate: newVehicleType.value.special_fee_rate / 100
   };
 
-  // Save the adjusted vehicle type using the store's createVehicleType action
   await vehicleTypeStore.createVehicleType(adjustedVehicleType);
 
-  // Reset form fields and hide the form
   newVehicleType.value = { name: '', basic_fee_min: '', basic_fee_max: '', basic_fee_rate: '', special_fee_rate: '' };
   showAddVehicleTypeForm.value = false;
 };
 
-// Edit vehicle type function
 const editVehicleType = (vehicleType) => {
   console.log(`Editing vehicle type: ${vehicleType.name}`);
-  // Logic to edit the vehicle type
 };
 
-// Delete vehicle type function
 const deleteVehicleType = (id) => {
   vehicleTypeStore.deleteVehicleType(id);
   console.log(`Deleting vehicle type with ID: ${id}`);

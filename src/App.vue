@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import { useAuthStore } from '@/stores/auth' // Adjust the path as needed
+import { useAuthStore } from '@/stores/auth'
 import { storeToRefs } from 'pinia'
 
 // Access the auth store
 const authStore = useAuthStore()
-const { token, isAdmin } = storeToRefs(authStore)  // Use storeToRefs for reactivity
+const { token, isAdmin } = storeToRefs(authStore)
 
 function signOut() {
-  authStore.logout()  // Call the logout action from Pinia store
+  authStore.logout()
 }
 </script>
 
@@ -22,7 +22,6 @@ function signOut() {
         <RouterLink v-if="!token" :to="{ name: 'login' }" class="nav-link">Sign In</RouterLink>
         <button v-else @click="signOut" class="nav-link">Sign Out</button>
 
-        <!-- Only show the Settings link if the user is an admin -->
         <RouterLink v-if="isAdmin" :to="{ name: 'settings' }" class="nav-link">Settings</RouterLink>
       </div>
     </nav>

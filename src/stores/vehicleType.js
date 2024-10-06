@@ -1,5 +1,5 @@
 import {defineStore} from 'pinia';
-import {apiFetch} from '@/utils/api'; // Import the API utility
+import {apiFetch} from '@/utils/api';
 
 export const useVehicleTypeStore = defineStore('vehicleTypeStore', {
     state: () => ({
